@@ -11,6 +11,5 @@ const renderTask = () => {
   taskList = document.getElementById('container');
   taskList.innerHtml = '';
   toDoTasks.forEach((task) => {
-    
   }); 
 }
