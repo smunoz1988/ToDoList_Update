@@ -1,11 +1,6 @@
 import './style.css';
 
-const toDoTasks = [
-  { description: 'buy groceries', completed: false, index: 1},
-  { description: 'eat 2 apples', completed: false, index: 2},
-  { description: 'make 3 clean', completed: false, index: 3}
-];
-
+const addBtn = document.getElementById('clearAllBtn');
 
 const renderTask = (list) => {
   const taskList = document.getElementById('container');
@@ -24,10 +19,32 @@ const itemTemplate = (task) => {
       <button class="clearBtn">Clear</button>
     </div>
     `;
-  return itemTemplate;
+    return itemTemplate;
 }
- 
 
-window.onload = renderTask(toDoTasks);
+const getItems = () => {
+  const list = localStorage.getItem('data') || '[]';
+  return JSON.parse(list);
+}
 
-console.log('test');
+const list = getItems();
+
+const setItems = (list) => {
+  const itemJSON = JSON.stringify(list);
+  localStorage.setItem('data', itemJSON);
+}
+
+const addNewItem = () => {
+  list.push({
+    description: '',
+    completed: false
+  });
+  setItems(list);
+  renderTask(list);
+}
+
+addBtn,addEventListener('click', () => {
+  addNewItem();
+})
+
+renderTask();
