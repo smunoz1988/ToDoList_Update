@@ -9,7 +9,14 @@
     <h1>To Do List</h1>
         <p>Today's To Do</p>
         <input>
-        <ul id="container"></ul>
-        <button>Clear All</button>
+        <button id="addItem">Add To Do</button>
+        <div id="container">
+            <div class="item">
+                <input type="checkbox" class="itemCompleted">
+                <input type="text" class="itemDescription" placeholder="To-Do item">
+                <button class="clearBtn">Clear</button>
+            </div>
+        </div>
+        <button id="clearAllBtn">Clear All</button>
 </body>
 </html>
