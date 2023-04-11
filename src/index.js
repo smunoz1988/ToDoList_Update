@@ -7,9 +7,8 @@ const getItems = () => {
   return JSON.parse(list);
 }
 
-const list = getItems();
-
-const renderTask = (list) => {
+const renderTask = () => {
+  const list = getItems();
   const taskList = document.getElementById('container');
   taskList.innerHtml = '';
   list.forEach((task) => {
@@ -35,17 +34,18 @@ const setItems = (list) => {
 }
 
 const addNewItem = () => {
+  const list = getItems();
   list.push({
     description: '',
     completed: false,
     id: ''
   });
   setItems(list);
+  renderTask();
 }
 
 addBtn.addEventListener('click', () => {
-  console.log(list);
   addNewItem();
 })
 
-//renderTask();
+renderTask();
