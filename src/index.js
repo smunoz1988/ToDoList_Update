@@ -1,6 +1,13 @@
 import './style.css';
 
-const addBtn = document.getElementById('clearAllBtn');
+const addBtn = document.getElementById('addItem');
+
+const getItems = () => {
+  const list = localStorage.getItem('data') || '[]';
+  return JSON.parse(list);
+}
+
+const list = getItems();
 
 const renderTask = (list) => {
   const taskList = document.getElementById('container');
@@ -22,13 +29,6 @@ const itemTemplate = (task) => {
     return itemTemplate;
 }
 
-const getItems = () => {
-  const list = localStorage.getItem('data') || '[]';
-  return JSON.parse(list);
-}
-
-const list = getItems();
-
 const setItems = (list) => {
   const itemJSON = JSON.stringify(list);
   localStorage.setItem('data', itemJSON);
@@ -37,14 +37,15 @@ const setItems = (list) => {
 const addNewItem = () => {
   list.push({
     description: '',
-    completed: false
+    completed: false,
+    id: ''
   });
   setItems(list);
-  renderTask(list);
 }
 
-addBtn,addEventListener('click', () => {
+addBtn.addEventListener('click', () => {
+  console.log(list);
   addNewItem();
 })
 
-renderTask();
+//renderTask();

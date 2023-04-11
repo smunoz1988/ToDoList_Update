@@ -9,3 +9,6 @@
   text-decoration: line-through;
 }
 
+#addItem {
+  cursor: pointer;
+}
