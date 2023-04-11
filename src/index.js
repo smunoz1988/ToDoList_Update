@@ -9,8 +9,9 @@ const getItems = () => {
 
 const renderTask = () => {
   const list = getItems();
+  console.log(list);
   const taskList = document.getElementById('container');
-  taskList.innerHtml = '';
+  taskList.innerHTML = '';
   list.forEach((task) => {
     const newItem = itemTemplate(task);
     taskList.innerHTML += newItem;
